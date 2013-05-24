@@ -1,0 +1,43 @@
+html, body {
+  min-height: 100% ;/*4200px;*/
+  height: 100%;
+}
+
+.header
+{
+  margin: 20px;
+  width: 100%;
+  min-height: 20%;
+}
+
+  .analytics {
+    margin-left: 20px;
+    margin-right: 70px;
+  }
+
+      .data {
+        padding: 20px;
+        background: #bfbfbf;
+        min-height: 120px;
+      }
+
+.main
+{
+  background: green;
+  width: 100%;
+  height:80%; /*4000px*/
+}
+
+  .main iframe {
+    width: 100%;
+    min-height: 100%;
+  }
+
+
+
+/*Helpers*/
+.rounded {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
