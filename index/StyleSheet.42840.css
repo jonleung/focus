@@ -1,0 +1,182 @@
+/* The page background , outside the centered body of questions. (top, bottom, right, left).*/
+#SurveyEngineBody {
+	background: transparent url(bg_upenn.png) repeat-x scroll left top;
+	background-color: #fff;
+}
+
+/*Header and Footer are directly above and directly below the body of questions. This can be used to change shadow images or background colors.*/
+.Skin #Header {
+  background: transparent url(none) no-repeat scroll left bottom;
+  position:relative;
+  top:120px;
+  border-bottom:4px double #bbb;
+  font-size:22px;
+  line-height: 1.6em;
+  color:#777;
+}
+
+.Skin #Footer {
+  background: transparent url(none) no-repeat scroll left top;
+} 
+
+/* The background of the entire question area (body of questions).*/
+.Skin #SkinContent {
+	background-color: transparent;
+	/*background: transparent url(exampleimage.png) repeat fixed center top;*/
+}
+
+/*Relates to SkinContent above. Can customize the width, font, etc. */
+.SkinInner {
+	/*width: 650px;*/
+	/*font-family: arial,helvetica,sans-serif;*/
+	/*font-size: 10pt;*/
+}
+
+/*The logo bar background color. Sits behind #Logo area (below). Can have its own image behind the #Logo.*/
+.Skin #LogoBar {
+	background-color: transparent;
+	position:relative;
+	bottom:20px;
+}
+
+/* Typically untouched. Special coding for IE. */
+* html .Skin #Logo {
+	filter: none;
+	background-image: none; /* remove the qualtrics logo for ie */
+}
+/* Use the following to add a custom logo. */
+html .Skin #Logo {
+	height: 80px; /* image height here */
+	background: transparent url(top_nav_eng_bnr.gif) no-repeat scroll left top;
+}
+
+/* The buttons background color at the bottom of the page. */
+.Skin #Buttons {
+	background-color: white;
+    text-align: right;
+}
+
+/* Progress bar color. Displays at bottom of page. */
+.Skin .ProgressBarFill {
+	background:#2B2B2B;
+}
+
+.Skin .ProgressBarFillContainer {
+border:1px solid #2B2B2B;
+}
+
+.Skin #ProgressBar {
+color:#2B2B2B;
+}
+
+/* To format all question text above each question. */
+.Skin .QuestionText {
+	font-size: 120%;
+	color:#2B2B2B;
+	font-weight:bold;
+    padding: 3px;
+}
+
+.Skin #Questions {
+background:white;
+margin-top:35px;
+}
+
+.Skin .QuestionBody {
+padding:6px;
+}
+
+/* .ReadableAlt is the alternating row color on questions where it is needed for readability
+ * .LightBG is an accent color used on several question types.
+ */
+.Skin .ReadableAlt,
+.Skin .LightBG {
+	background:#efefef;
+}
+
+/*Change hover color for Rank Order Drag and Drop questions.*/
+/*.Skin .RO .DND ul li:hover {
+	background: none repeat scroll 0 0 #EBE9D9;
+}*/
+
+
+/* Is the alternating row color on questions where it's not needed. */
+.Skin .alt {
+}
+
+/* Is the non alternating color. Usually doesn't need to be touched. */
+.Skin .reg {
+}
+
+/* Is a dark background color used an accent in several questions */
+.Skin .DarkBG {
+}
+
+/* can be used to set the border color for all the quesions */
+.Skin .BorderColor {
+}
+
+/* Example of "boxed look". Uncomment below */
+/*
+.Skin .BorderColor {
+	border-color: #B55d3f;
+}
+.Skin .QuestionText{
+	padding:10px;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	background: #FFFCF2;
+}
+
+.Skin .QuestionOuter .InnerInner {
+	border-width: 1px;
+	border-style: solid;
+}
+*/
+
+/* Styles that highlight what the above things do. Uncomment below */
+/*
+.Skin .alt {
+	background: lightgray;
+}
+
+.Skin .ReadableAlt {
+	background: gray;
+}
+
+.Skin .LightBG {
+	background: yellow;
+}
+
+.Skin .DarkBG {
+	color: white;
+	background: black;
+}
+
+.Skin .BorderColor {
+	border-color: red;
+}
+*/
+
+.Skin .RO .DND .rank {
+background-color: #666666;
+color: white;
+}
+
+/*This is the color that will appear in the boxes behind the numbers of the rank order options when they're moved */
+.Skin .RO .DND ul.Edited .rank, .Skin .RO .DND ul.NotEdited li:hover .rank {
+background: #990000;
+color: white;
+}
+
+.Skin #Plug {
+color:#000000;
+}
+
+.Skin #Plug a {
+color:#000000;
+}
+
+.Skin {
+color:#2B2B2B;
+}
