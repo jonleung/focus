@@ -102,6 +102,22 @@ START_TIME = "startTime";
       jQuery.removeCookie(START_TIME)
     }
 
+    var getPageId = function () {
+      var pageId = "none";
+      if ($("#page").length > 0) {
+        pageId = $("#page").text();
+      }
+      return page_id;
+    }
+
+    var getProblemSetId = function () {
+      var problemSetId = "none";
+      if ($("#problem-set").length > 0) {
+        problemSetId = $("#problem-set").text();
+      }
+      return problemSetId;
+    }
+
     //#################################
     // Initializers
 
@@ -138,11 +154,13 @@ START_TIME = "startTime";
       clearEventsArray()
     }
 
-    var pushEvent = function(type) {
+    var pushEvent = function(params) {
       var eventsArray = jQuery.cookie(EVENTS_ARRAY)
       var e = {
         "timestamp": (new Date).getTime(),
-        "type": type
+        "type": params.type,
+        "page": params.page_id,
+        "problem_set": params.problem_set_id
       }
       eventsArray.push(e)
       jQuery.cookie(EVENTS_ARRAY, eventsArray)
@@ -184,7 +202,11 @@ START_TIME = "startTime";
     // Window Switching
 
     var log = function(string) {
-      pushEvent(string)
+      params = {}
+      params.type = string;
+      params.page_id = getPageId()
+      params.problem_set_id = getProblemSetId() 
+      pushEvent(params)
 
       console.log( getCurDateString() + ": " + string )
       console.log( jQuery.cookie(EVENTS_ARRAY) )
@@ -307,10 +329,17 @@ START_TIME = "startTime";
       }
       console.log(type)
 
+      params = {}
       if (type == FOCUSED)
-        pushEvent(DISTRACTED)
+        params.type = DISTRACTED;
+        params.page_id = getPageId()
+        params.problem_set_id = getProblemSetId() 
+        pushEvent(params)
       else
-        pushEvent(FOCUSED)
+        params.type = FOCUSED;
+        params.page_id = getPageId()
+        params.problem_set_id = getProblemSetId() 
+        pushEvent(params)
 
       calculateAndSetQualtrics()
 
