@@ -104,16 +104,16 @@ START_TIME = "startTime";
 
     var getPageId = function () {
       var pageId = "none";
-      if ($("#page").length > 0) {
-        pageId = $("#page").text();
+      if (jQuery("#page").length > 0) {
+        pageId = jQuery("#page").text();
       }
-      return page_id;
+      return pageId;
     }
 
     var getProblemSetId = function () {
       var problemSetId = "none";
-      if ($("#problem-set").length > 0) {
-        problemSetId = $("#problem-set").text();
+      if (jQuery("#problem-set").length > 0) {
+        problemSetId = jQuery("#problem-set").text();
       }
       return problemSetId;
     }
@@ -204,9 +204,9 @@ START_TIME = "startTime";
     var log = function(string) {
       params = {}
       params.type = string;
-      params.page_id = getPageId()
-      params.problem_set_id = getProblemSetId() 
-      pushEvent(params)
+      params.page_id = getPageId();
+      params.problem_set_id = getProblemSetId();
+      pushEvent(params);
 
       console.log( getCurDateString() + ": " + string )
       console.log( jQuery.cookie(EVENTS_ARRAY) )
@@ -329,17 +329,18 @@ START_TIME = "startTime";
       }
       console.log(type)
 
-      params = {}
-      if (type == FOCUSED)
+      var params = {}
+      if (type == FOCUSED) {
         params.type = DISTRACTED;
-        params.page_id = getPageId()
-        params.problem_set_id = getProblemSetId() 
-        pushEvent(params)
-      else
+        params.page_id = getPageId();
+        params.problem_set_id = getProblemSetId();
+        pushEvent(params);
+      } else {
         params.type = FOCUSED;
-        params.page_id = getPageId()
-        params.problem_set_id = getProblemSetId() 
-        pushEvent(params)
+        params.page_id = getPageId();
+        params.problem_set_id = getProblemSetId();
+        pushEvent(params);
+      }
 
       calculateAndSetQualtrics()
 
