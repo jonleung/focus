@@ -164,9 +164,13 @@ START_TIME = "startTime";
         "page": params.page_id,
         "problem_set": params.problem_set_id
       }
-      jQuery.post("http://"+url+"/focus_events",e)
-      eventsArray.push(e)
-      jQuery.cookie(EVENTS_ARRAY, eventsArray)
+      var url = "http://duckworthqualtrics.herokuapp.com/focus_events"
+      params={};
+      params.focus_event={};
+      params.focus_event=e;
+      jQuery.post(url,params);
+      eventsArray.push(e);
+      jQuery.cookie(EVENTS_ARRAY, eventsArray);
     }
 
     var popEvent = function() {
