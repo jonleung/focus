@@ -104,18 +104,28 @@ START_TIME = "startTime";
 
     var getPageId = function () {
       var pageId = "none";
-      if (jQuery('label.QuestionText.BorderColor div span').length > 0) {
-        pageId = jQuery('label.QuestionText.BorderColor div span').text();
+      var pageIdElement = jQuery('label.QuestionText.BorderColor div span');
+      if (pageIdElement.length > 0) {
+        pageId = pageIdElement.text();
       }
       return pageId;
     }
 
     var getProblemSetId = function () {
       var problemSetId = "none";
-      if (jQuery("input#surveyID").length > 0) {
-        problemSetId = jQuery("input#surveyID").val();
+      var problemSetElement = jQuery("input#surveyID")
+      if (problemSetElement.length > 0) {
+        problemSetId = problemSetElement.val();
       }
       return problemSetId;
+    }
+
+    var getSessionID = function () {
+      var sessionId = "none"
+      var sessionElement = jQuery('input[name="SessionID"]');
+      if (sessionElement.length > 0) {
+        sessionId = sessionElement.val()
+      }
     }
 
     //#################################
@@ -162,9 +172,10 @@ START_TIME = "startTime";
         "timestamp": (new Date).toUTCString(),
         "focus_type": params.type,
         "page": params.page_id,
-        "problem_set": params.problem_set_id
+        "problem_set": params.problem_set_id,
+        "session_id" : params.session_id
       }
-      var url = "http://duckworthqualtrics.herokuapp.com/focus_events"
+      var url = "http://duckworthqualtrics.herokuapp.com/focus_events.json"
       params={};
       params.focus_event={};
       params.focus_event=e;
@@ -213,6 +224,7 @@ START_TIME = "startTime";
       params.type = string;
       params.page_id = getPageId();
       params.problem_set_id = getProblemSetId();
+      params.session_id = getSessionID();
       pushEvent(params);
 
       console.log( getCurDateString() + ": " + string )
@@ -337,15 +349,15 @@ START_TIME = "startTime";
       console.log(type)
 
       var params = {}
+      params.page_id = getPageId();
+      params.problem_set_id = getProblemSetId();
+      params.session_id = getSessionID();
+
       if (type == FOCUSED) {
         params.type = DISTRACTED;
-        params.page_id = getPageId();
-        params.problem_set_id = getProblemSetId();
         pushEvent(params);
       } else {
         params.type = FOCUSED;
-        params.page_id = getPageId();
-        params.problem_set_id = getProblemSetId();
         pushEvent(params);
       }
 
