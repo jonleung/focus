@@ -138,6 +138,14 @@ START_TIME = "startTime";
     }
 
     var initTime = function() {
+      console.log("initTime()");
+      params = {};
+      params.type = FOCUSED;
+      params.page_id = getPageId();
+      params.problem_set_id = getProblemSetId();
+      params.session_id = getSessionID();
+      pushEvent(params);
+
       if ( getHash() === NOT_FIRST_LAUNCH ) {
         // NOT First Launch
       }
