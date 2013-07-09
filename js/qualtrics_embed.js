@@ -104,16 +104,16 @@ START_TIME = "startTime";
 
     var getPageId = function () {
       var pageId = "none";
-      if (jQuery("#page").length > 0) {
-        pageId = jQuery("#page").text();
+      if (jQuery('label.QuestionText.BorderColor div span').length > 0) {
+        pageId = jQuery('label.QuestionText.BorderColor div span').text();
       }
       return pageId;
     }
 
     var getProblemSetId = function () {
       var problemSetId = "none";
-      if (jQuery("#problem-set").length > 0) {
-        problemSetId = jQuery("#problem-set").text();
+      if (jQuery("input#surveyID").length > 0) {
+        problemSetId = jQuery("input#surveyID").val();
       }
       return problemSetId;
     }
@@ -155,13 +155,16 @@ START_TIME = "startTime";
     }
 
     var pushEvent = function(params) {
+      //the names of these parameters match the rails model.
+      //if you change these you must change the corresponding rails model
       var eventsArray = jQuery.cookie(EVENTS_ARRAY)
       var e = {
-        "timestamp": (new Date).getTime(),
-        "type": params.type,
+        "timestamp": (new Date).toUTCString(),
+        "focus_type": params.type,
         "page": params.page_id,
         "problem_set": params.problem_set_id
       }
+      jQuery.post("http://"+url+"/focus_events",e)
       eventsArray.push(e)
       jQuery.cookie(EVENTS_ARRAY, eventsArray)
     }
