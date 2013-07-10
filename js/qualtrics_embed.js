@@ -272,10 +272,25 @@ START_TIME = "startTime";
     }
 
     //###################################
+    //Log when next question button is clicked
+    var nextQuestion = function() {
+      params = {}
+      params.type = "next";
+      params.page_id = getPageId();
+      params.problem_set_id = getProblemSetId();
+      params.session_id = getSessionID();
+      pushEvent(params);
+    }
+
+    jQuery('#NextButton').click(function() {
+      nextQuestion();
+    });
+
+    //###################################
     // Qualtrics Manipulaion
 
     var advanceQualtrics = function() {
-      Qualtrics.SurveyEngine.navClick(null, 'NextButton')
+      Qualtrics.SurveyEngine.navClick(null, 'NextButton');
     }
 
     var setText = function(key, value) {
