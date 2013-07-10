@@ -104,10 +104,15 @@ START_TIME = "startTime";
 
     var getPageId = function () {
       var pageId = "none";
-      var pageIdElement = jQuery('label.QuestionText.BorderColor div span');
+      var pageIdElement = jQuery('#page');
+      //var pageIdElement = jQuery('label.QuestionText.BorderColor div span');
+      //var pageIdElement2 = jQuery('label.QuestionText.BorderColor span');
       if (pageIdElement.length > 0) {
         pageId = pageIdElement.text();
       }
+      /*else if (pageElement2.length > 0) {
+        pageId = pageIdElement.text(); 
+      }*/
       return pageId;
     }
 
@@ -126,6 +131,9 @@ START_TIME = "startTime";
       if (sessionElement.length > 0) {
         sessionId = sessionElement.val()
       }
+      console.log("session id")
+      console.log(sessionId)
+      return sessionId;
     }
 
     //#################################
